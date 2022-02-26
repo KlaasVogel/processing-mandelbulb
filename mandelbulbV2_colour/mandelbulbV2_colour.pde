@@ -72,7 +72,9 @@ void draw() {
   //}
 
   //moved from setup:
-
+  //in second test I will try to look at a point and see if it's finite (value in matrix is zero) and has any neigbours who is infinite (one)
+  //it returns the value of neighbours points who will go to infinity (for adding color) 
+  //this iteration does not include the border for simplicity (so iteration from 1 to DIM-1) for each axis
   for (int i = 1; i < DIM-1; i++){
     for (int j = 1; j < DIM-1; j++){
       for (int k = 1; k < DIM-1; k++){
@@ -90,9 +92,6 @@ void draw() {
   }
 }
 
-//in second test I will try to look at a point and see if it's finite (value in matrix is zero) and has any neigbours who is infinite (one)
-//it returns the value of neighbours poins who will go to infinity (for adding color) 
-//this iteration does not include the border for simplicity 
 int checkMatrix(int i, int j, int k){
   if (infinityMatrix[i][j][k]==1){
     return 0;
