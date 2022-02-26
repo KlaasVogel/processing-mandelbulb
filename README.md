@@ -4,7 +4,7 @@ First attempt at using processing and optimization of a code from thecodingtrain
 - there are two versions
 
 # V1 - new edge detection
-- moved n and maxinterations to global vars
+- moved n and maxinerations to global vars
 - changed the while(true)-loop for a for-loop 
 - added a matrix to register if the iteration for that points goes to infinity.
 
