@@ -25,10 +25,9 @@ void setup(){
         float z = map(k, 0, DIM, -1, 1);
         PVector zeta = new PVector(0,0,0);
         
-        // rewrote the while(true) loop to a for loop
         // when zeta goes to infinity the value in the infinitymatrix will be set to 1
         //otherwise the value will stay at zero
-        infinityMatrix[i][j][k] = 0; //init
+        infinityMatrix[i][j][k] = 0; //to init matrix with zeros
         for (int iteration = 0; iteration < MAXiterations; iteration++){
           Spherical c = spherical(zeta.x,zeta.y,zeta.z);
           float newx = pow(c.r, n) * sin(c.theta*n) * cos(c.phi*n);
@@ -46,9 +45,6 @@ void setup(){
       }
     }
   }
-  
-  //infinitymatrix is filled. Now I do a second iteration over this matrix to check if a
-  //point is the edge of the mandelbulb.
 }
 
 class Spherical {
@@ -69,12 +65,16 @@ Spherical spherical(float x, float y, float z){
 
 void draw() {
   background(0);
+  //old code:
   //for (PVector v: mandelbulb){
   //  stroke(255);
   //  point(v.x, v.y, v.z);
   //}
+
   //moved from setup:
-  
+  //in second test I will try to look at a point and see if it's finite (value in matrix is zero) and has any neigbours who is infinite (one)
+  //it returns the value of neighbours points who will go to infinity (for adding color) 
+  //this iteration does not include the border for simplicity (so iteration from 1 to DIM-1) for each axis
   for (int i = 1; i < DIM-1; i++){
     for (int j = 1; j < DIM-1; j++){
       for (int k = 1; k < DIM-1; k++){
@@ -86,16 +86,12 @@ void draw() {
           //mandelbulb.add(new PVector(x,y,z));
           stroke(neighbourcount,7,8);
           point(x,y,z);
- 
         }
       }
     }
   }
 }
 
-//in second test I will try to look at a point and see if it's finite (value in matrix is zero) and has any neigbours who is infinite (one)
-//it returns the value of infinite neighbours (for adding color) 
-//the iteration does not include the border for simplicity 
 int checkMatrix(int i, int j, int k){
   if (infinityMatrix[i][j][k]==1){
     return 0;
