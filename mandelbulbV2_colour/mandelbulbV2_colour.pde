@@ -28,7 +28,7 @@ void setup(){
         // rewrote the while(true) loop to a for loop
         // when zeta goes to infinity the value in the infinitymatrix will be set to 1
         //otherwise the value will stay at zero
-        infinityMatrix[i][j][k] = 0; //setting 
+        infinityMatrix[i][j][k] = 0; //init
         for (int iteration = 0; iteration < MAXiterations; iteration++){
           Spherical c = spherical(zeta.x,zeta.y,zeta.z);
           float newx = pow(c.r, n) * sin(c.theta*n) * cos(c.phi*n);
