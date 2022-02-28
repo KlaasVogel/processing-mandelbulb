@@ -13,7 +13,7 @@ First attempt at using processing and optimization of a code from thecodingtrain
 - new check returns now the number of neighbours of an edge which go to infinity
 - this number also defines the colour of this point
 
-#V3_mesh
+# V3_mesh
 - refactored mandelbulb calculations and infitymatrix into own class
 - cleanup of old code
 - tried to make mesh, doens't work yet
